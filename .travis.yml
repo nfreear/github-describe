@@ -12,8 +12,10 @@ cache:
 
 # install: npm install
 
-# before_script: npm run build
+before_script: npm run build
 
 # script: npm test
+
+after_script: ls -al dist/ index.js
 
 # End.

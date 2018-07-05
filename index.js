@@ -1,11 +1,9 @@
 /*!
-  github-describe | © Nick Freear, 05-July-2018.
+  github-describe | © Nick Freear.
 */
 
-// const __REQUEST = window.jQuery ? window.jQuery.fn : window.superagent; // OR, require('superagent');
-// const __GET = window.jQuery ? window.jQuery.fn.get : window.superagent.get;
-const GET_FN = ajaxGet;
-const THEN_FN = window.jQuery ? 'done' : 'then';
+const GET_FN = window.require ? require('superagent').get : ajaxGet;
+const THEN_FN = window.$ ? 'done' : 'then';
 
 const ELEM = document.querySelector('#github-describe');
 const REPO = document.querySelector('[ data-github-describe-repo ]').getAttribute('data-github-describe-repo');
@@ -16,7 +14,7 @@ const COMP_URL = 'https://api.github.com/repos/{repo}/compare/{tag}...HEAD'.repl
 
 console.warn('github-describe:', REPO, TAG_URL, ELEM);
 
-GET_FN(TAG_URL)/* .accept('json') */[ THEN_FN ](function (res) {
+GET_FN(TAG_URL)[ THEN_FN ](function (res) {
   // console.warn(res);
 
   console.assert(res.status === 200, 'HTTP status');
@@ -29,9 +27,7 @@ GET_FN(TAG_URL)/* .accept('json') */[ THEN_FN ](function (res) {
 
   console.warn('GD tag:', LAST_TAG, COMPARE_URL);
 
-  GET_FN(COMPARE_URL)/* .accept('json') */[ THEN_FN ](function (res) {
-    // console.warn(res);
-
+  GET_FN(COMPARE_URL)[ THEN_FN ](function (res) {
     console.assert(res.status === 200, 'HTTP status');
     console.assert(res.body.status === 'ahead', 'Ahead?');
     console.assert(res.body.behind_by === 0);
@@ -50,13 +46,13 @@ GET_FN(TAG_URL)/* .accept('json') */[ THEN_FN ](function (res) {
 
 function ajaxGet (url) {
   const W = window;
-  return W.jQuery ? W.jQuery.getJSON(url) : W.superagent.get(url);
+  return W.jQuery ? W.$.get(url) : W.superagent.get(url)/* .accept('json') */;
 }
 
 function replaceObj (str, mapObj) {
-  var re = new RegExp(Object.keys(mapObj).join('|'), 'g'); // Was: "gi".
+  const RE = new RegExp(Object.keys(mapObj).join('|'), 'g'); // Was: "gi".
 
-  return str.replace(re, function (matched) {
-    return mapObj[ matched ]; // Was: matched.toLowerCase().
+  return str.replace(RE, function (matched) {
+    return mapObj[ matched ];
   });
 }
