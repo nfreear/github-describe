@@ -3,16 +3,21 @@
   "name": "github-describe",
   "version": "1.0.0",
   "description": "Run 'git describe' on a GitHub repository, in the browser. Useful for GitHub pages sites!",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "index.js",
+  "unpkg": "dist/github-describe.min.js",
   "author": "© Nick Freear, 05-July-2018.",
   "repository": "https://github.com/nfreear/github-describe.git",
   "bugs": "https://github.com/nfreear/github-describe/issues",
-  "engines": { "node": ">= 6" },
+  "engines": {
+    "node": ">= 6"
+  },
   "dependencies": {
     "superagent": "^3.8.3"
   },
   "peerDependencies": {
+    "micro-request": "^666.0.10",
+    "then-request": "^6.0.0",
     "jquery": "^3.3.1"
   },
   "devDependencies": {
@@ -23,8 +28,9 @@
   },
   "keywords": [ "git-describe", "github", "git", "github-pages" ],
   "scripts": {
-    "build": "browserify index.js > dist/dist.js && bin/_rep.js && npm run uglify",
-    "uglify": "uglifyjs dist/dist.js --comments=/^[!]/ -mco dist/min.js",
+    "build": "browserify index.js > dist/github-describe.js && bin/_rep.js && npm run uglify",
+    "uglify": "uglifyjs dist/*-describe.js --comments=/^[!]/ -mco dist/github-describe.min.js",
+    "wrap": "echo No-op",
     "fix": "semistandard --fix",
     "test": "semistandard"
   }

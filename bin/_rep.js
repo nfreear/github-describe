@@ -16,7 +16,7 @@ console.warn('cwd:', process.cwd());
 
 // A crude ES6 'const' to 'var' converter!
 REPLACE({
-  paths: [ 'dist/dist.js' ],
+  paths: [ 'dist/github-describe.js' ],
   regex: 'const ',
   replacement: 'var ',
   recursive: false,
