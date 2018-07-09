@@ -1,5 +1,4 @@
 {
-  "publish": false,
   "name": "github-describe",
   "version": "1.0.0",
   "description": "Run 'git describe' on a GitHub repository, in the browser. Useful for GitHub pages sites!",
@@ -24,7 +23,7 @@
   },
   "keywords": [ "git-describe", "github", "git", "github-pages", "github-api", "fetch", "fetch-api" ],
   "scripts": {
-    "build": "mkdir -p dist/; browserify -bare index.js > dist/github-describe.js",
+    "build": "mkdir -p dist/; browserify index.js > dist/github-describe.js && npm run build-min",
     "build-min": "cp index.js dist/github-describe.min.js; bin/_rep.js",
     "fix": "semistandard --fix",
     "test": "semistandard"
