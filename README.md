@@ -1,5 +1,6 @@
 
 [![Build Status][travis-icon]][travis]
+[![github-describe - on Npmjs][npm-icon]][npm]
 
 # github-describe
 
@@ -12,11 +13,10 @@ Useful for GitHub pages sites, etc.!
 <a
   id="github-describe"
   data-github-describe-repo="{USER or ORG}/{REPO}"
-  href="#!-Loading-Git-data..."
 > ⏳ Loading ... </a>
 
 
-<script src="https://unpkg.com/github-describe@%5E1"></script>
+<script src="https://unpkg.com/github-describe@^1"></script>
 ```
 
 ## Install .. build .. test
@@ -36,3 +36,5 @@ License: [MIT][]
 [mit]: https://nfreear.mit-license.org/2018#
 [travis]: https://travis-ci.org/nfreear/github-describe
 [travis-icon]: https://travis-ci.org/nfreear/github-describe.svg?branch=master
+[npm]: https://npmjs.com/package/github-describe
+[npm-icon]: https://badge.fury.io/js/github-describe.svg

@@ -22,6 +22,7 @@
     "semistandard": "^12.0.1"
   },
   "keywords": [ "git-describe", "github", "git", "github-pages", "github-api", "fetch", "fetch-api" ],
+  "files": [ "dist/*.js", "test/*x.html" ],
   "scripts": {
     "build": "mkdir -p dist/; browserify index.js > dist/github-describe.js && npm run build-min",
     "build-min": "cp index.js dist/github-describe.min.js; bin/_rep.js",
