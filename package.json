@@ -12,23 +12,23 @@
   "engines": {
     "node": ">= 6"
   },
-  "dependencies": {
-    "superagent": "^3.8.3"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "micro-request": "^666.0.10",
-    "then-request": "^6.0.0",
-    "jquery": "^3.3.1"
+    "fetch": "https://caniuse.com/#feat=fetch",
+    "micro-request": "^666.0.10"
   },
   "devDependencies": {
     "browserify": "^16.2.2",
     "replace": "^1.0.0",
     "semistandard": "^12.0.1",
-    "uglify-js": "^3.4.3"
+    "youemdee": "^1.0.1"
   },
-  "keywords": [ "git-describe", "github", "git", "github-pages" ],
+  "keywords": [ "git-describe", "github", "git", "github-pages", "github-api", "fetch", "fetch-api" ],
   "scripts": {
-    "build": "browserify index.js > dist/github-describe.js && bin/_rep.js && npm run uglify",
+    "build": "mkdir -p dist/; browserify -bare index.js > dist/github-describe.js",
+    "build-min": "cp index.js dist/github-describe.min.js; bin/_rep.js",
+    "X-UMD-build": "youemdee index.js",
+    "X-build-OLD": "mkdir -p dist/; browserify index.js > dist/github-describe.js && bin/_rep.js && npm run uglify",
     "uglify": "uglifyjs dist/*-describe.js --comments=/^[!]/ -mco dist/github-describe.min.js",
     "wrap": "echo No-op",
     "fix": "semistandard --fix",
